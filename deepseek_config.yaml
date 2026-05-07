@@ -1,0 +1,16 @@
+model_provider: "deepseek"
+model_name: "deepseek-reasoner" # R1 model
+api_base: "https://api.deepseek.com/v1"
+
+reasoning_parameters:
+  temperature: 0.3
+  max_tokens: 8192
+  enable_cot: true # Enable Chain of Thought
+
+agents:
+  monitor:
+    interval: "10s"
+    source: "prometheus"
+  executor:
+    mode: "dry-run" # Default to dry-run for safety
+    allowed_commands: ["kubectl scale", "systemctl restart", "clear cache"]
